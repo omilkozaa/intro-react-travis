@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ShowCounter from './ShowCounter';
-import Button from './Button';
+import Button from "./Button";
+
 
 class Content extends Component {
 
@@ -62,6 +63,7 @@ class Content extends Component {
         }
         return(
         <div>
+            <Button onClick={this.minusCounter} text="minus"/>
             <button onClick={this.addCounter}>+</button>
             <button onClick={this.minusCounter}>-</button>
             <ShowCounter counter={this.state.counter} info={info}/>
