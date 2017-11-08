@@ -16,7 +16,6 @@ class App extends Component {
 
           <Header/>
           <HomeBody/>
-          <HomeFooter/>
       </div>
     );
   }
