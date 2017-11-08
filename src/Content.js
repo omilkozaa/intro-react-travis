@@ -69,7 +69,7 @@ class Content extends Component {
             <input type="text" name="first_name" onChange={this.handleChange}/>
             <input type="text" name="last_name" onChange={this.handleChange}/>
             <button onClick={this.handleSubmit}>Save</button>
-           
+
         </div>
         )
     }
