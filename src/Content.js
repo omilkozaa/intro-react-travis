@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import ShowCounter from './ShowCounter';
 import Button from "./Button";
+import ShowData from "./ShowData";
 
 
 class Content extends Component {
+
+    state = {
+        products: []
+    }
 
     constructor( props ) {
         super(props);
@@ -16,8 +21,10 @@ class Content extends Component {
         }
         this.minusCounter = this.minusCounter.bind(this);
         this.addCounter = this.addCounter.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.mulCounter = this.mulCounter.bind(this);
+        this.divCounter = this.divCounter.bind(this);
+        //this.handleChange = this.handleChange.bind(this);
+        //this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentWillMount(){
@@ -30,7 +37,7 @@ class Content extends Component {
             this.setState(
                 {showLoading: false}
             )
-        },3000)
+        },1)
     }
 
 
@@ -41,8 +48,14 @@ class Content extends Component {
     addCounter(){
         this.setState({counter: this.state.counter + 1 });
     }
+    mulCounter(){
+        this.setState({counter: this.state.counter * 2})
+    }
+    divCounter(){
+        this.setState({counter: this.state.counter / 2})
+    }
 
-    handleChange(event) {
+    /*handleChange(event) {
         const key = event.target.name;
         const value = event.target.value;
         this.setState({
@@ -52,8 +65,10 @@ class Content extends Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        alert("Name : " + this.state.first_name + ' ' + this.state.last_name)
-    }
+        if(this.state.first_name && this.state.last_name != "") {
+            alert("Name : " + this.state.first_name + ' ' + this.state.last_name)
+        }
+    }*/
 
     render() {
         if(this.state.showLoading) return <h1>Loading...</h1>
@@ -63,15 +78,13 @@ class Content extends Component {
         }
         return(
         <div>
-            <Button onClick={this.minusCounter} text="minus"/>
             <button onClick={this.addCounter}>+</button>
             <button onClick={this.minusCounter}>-</button>
+            <Button onClick={this.mulCounter} text="x2"/>
+            <Button onClick={this.divCounter} text="/2"/>
             <ShowCounter counter={this.state.counter} info={info}/>
             <br/>
-            <input type="text" name="first_name" onChange={this.handleChange}/>
-            <input type="text" name="last_name" onChange={this.handleChange}/>
-            <button onClick={this.handleSubmit}>Save</button>
-
+            <ShowData/>
         </div>
         )
     }
